@@ -1,12 +1,18 @@
 package pokemonPrjct.pokemon.gameengine;
+import pokemonPrjct.pokemon.TypeChart;
+import pokemonPrjct.pokemon.Attack;
+import pokemonPrjct.pokemon.Pokemon;
+
 
 public class Battle {
     private Player player1;
     private Player player2;
+    private PokemonServices pokemonServices;
 
-    public Battle(Player player1, Player player2) {
+    public Battle(Player player1, Player player2, PokemonServices pokemonServices) {
         this.player1 = player1;
         this.player2 = player2;
+        this.pokemonServices = pokemonServices;
     }
 
     public void start() {
@@ -31,9 +37,9 @@ public class Battle {
 
             System.out.println(otherPlayer.getActivePokemon().getName() + " takes " + damage + " damage!");
 
-            if (otherPlayer.getActivePokemon().getCurrentHealth() <= 0) {
+            if (otherPlayer.getActivePokemon().getCurrentHealth() > 0)   {
                 System.out.println(otherPlayer.getName() + "'s " + otherPlayer.getActivePokemon().getName() + " faints!");
-                otherPlayer.switchPokemon();
+                otherPlayer.switchPokemon(pokemonServices);
                 if (otherPlayer.getNumberOfPokemonRemaining() == 0) {
                     Player winner = currentPlayer;
                     winner.setWins(winner.getWins() + 1);

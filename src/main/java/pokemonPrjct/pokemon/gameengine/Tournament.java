@@ -1,5 +1,7 @@
 package pokemonPrjct.pokemon.gameengine;
 
+import pokemonPrjct.pokemon.Pokemon;
+
 public class Tournament {
     private Player[] players;
     private int currentPlayerIndex;
@@ -22,20 +24,37 @@ public class Tournament {
     }
 
     public boolean isOver() {
-        int numFaintedPlayers = 0;
+        int numActivePlayers = 0;
         for (Player player : players) {
             Pokemon[] pokemons = player.getPokemons();
-            boolean allFainted = true;
+            boolean hasActivePokemon = false;
             for (Pokemon pokemon : pokemons) {
                 if (!pokemon.isFainted()) {
-                    allFainted = false;
+                    hasActivePokemon = true;
                     break;
                 }
             }
-            if (allFainted) {
-                numFaintedPlayers++;
+            if (hasActivePokemon) {
+                numActivePlayers++;
             }
         }
-        return numFaintedPlayers == players.length - 1;
+        return numActivePlayers <= 1;
+    }
+
+    public Player getWinner() {
+        for (Player player : players) {
+            Pokemon[] pokemons = player.getPokemons();
+            boolean hasActivePokemon = false;
+            for (Pokemon pokemon : pokemons) {
+                if (!pokemon.isFainted()) {
+                    hasActivePokemon = true;
+                    break;
+                }
+            }
+            if (hasActivePokemon) {
+                return player;
+            }
+        }
+        return null;
     }
 }
