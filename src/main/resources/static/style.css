@@ -1,0 +1,57 @@
+/* Set default font size and color */
+body {
+  font-size: 16px;
+  color: #333;
+}
+
+/* Style the header */
+header {
+  background-color: #ddd;
+  padding: 10px;
+}
+
+/* Style the navigation bar */
+nav {
+  background-color: #333;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+}
+
+/* Style the links in the navigation bar */
+nav a {
+  color: #fff;
+  text-decoration: none;
+  margin: 0 10px;
+}
+
+/* Style the main content */
+main {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+
+/* Style the image cards */
+.card {
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0 0 5px #ddd;
+  margin: 10px;
+  width: 200px;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Style the images in the cards */
+.card img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
