@@ -1,13 +1,17 @@
 package pokemonPrjct.pokemon.gameengine;
 
-public class Pokemon {
+import java.util.Random;
+import pokemonPrjct.pokemon.Attack;
+import pokemonPrjct.pokemon.DefenseAbility;
+
+public class PokemonGameEngine {
     private String name;
     private int level;
     private int hp;
     private Attack[] attacks;
     private DefenseAbility defense;
 
-    public Pokemon(String name, int level, int hp, Attack[] attacks, DefenseAbility defense) {
+    public PokemonGameEngine(String name, int level, int hp, Attack[] attacks, DefenseAbility defense) {
         this.name = name;
         this.level = level;
         this.hp = hp;
@@ -53,4 +57,3 @@ public class Pokemon {
         return attacks[index];
     }
 }
-

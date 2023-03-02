@@ -1,5 +1,7 @@
 package pokemonPrjct.pokemon.services;
 
+import pokemonPrjct.pokemon.Pokemon;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -10,7 +12,7 @@ import java.util.List;
 
 public class PokemonService {
 
-    private static final String DB_URL = "jdbc:mysql://localhost:3306/pokemon_db";
+    private static final String DB_URL = "jdbc:mysql://localhost:3306/db_pokemon";
     private static final String DB_USERNAME = "username";
     private static final String DB_PASSWORD = "password";
 
@@ -66,5 +68,14 @@ public class PokemonService {
         }
 
         return pokemon;
+    }
+
+    public void addPokemon(Pokemon pokemon) {
+    }
+
+    public void updatePokemon(Pokemon pokemon) {
+    }
+
+    public void deletePokemon(Pokemon pokemon) {
     }
 }
