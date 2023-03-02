@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Pokemon Game</title>
+  <link rel="stylesheet" th:href="@{/static/style.css}">
+</head>
+<body>
+<h1>Welcome to the Pokemon Game</h1>
+<div th:each="pokemon : ${pokemonList}">
+  <h2 th:text="${pokemon.getName()}"></h2>
+  <img th:src="@{${pokemon.getImageUrl()}}" th:alt="${pokemon.getName()}">
+  <p>HP: <span th:text="${pokemon.getHp()}"></span></p>
+  <p>Abilities: <span th:text="${pokemon.getAbilities()}"></span></p>
+</div>
+</body>
+</html>
