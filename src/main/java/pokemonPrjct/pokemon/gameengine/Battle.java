@@ -1,5 +1,5 @@
 package pokemonPrjct.pokemon.gameengine;
-import pokemonPrjct.pokemon.TypeChart;
+
 import pokemonPrjct.pokemon.Attack;
 import pokemonPrjct.pokemon.Pokemon;
 

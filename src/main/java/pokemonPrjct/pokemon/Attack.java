@@ -29,4 +29,7 @@ public class Attack {
     public String toString() {
         return name + " (" + damage + " damage)";
     }
+
+    public Object getType() {
+    }
 }
