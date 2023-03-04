@@ -82,5 +82,6 @@ public class TypeChart {
     }
 
     public static double getEffectiveness(Object type, String type1) {
+        return 0;
     }
 }

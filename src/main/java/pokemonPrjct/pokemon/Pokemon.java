@@ -1,15 +1,29 @@
 package pokemonPrjct.pokemon;
 
 public class Pokemon {
+    private int id;
     private String name;
+    private String appearance;
     private String type;
+    private String size;
     private int hp;
     private int attack;
     private int defense;
-    private int specialAttack;
-    private int specialDefense;
-    private int speed;
-    private String abilities;
+
+    public Pokemon(String pokemonName, String appearance, String type, String size, int hp, int attack, int defense) {
+    }
+
+    public Pokemon() {
+
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;
@@ -19,12 +33,28 @@ public class Pokemon {
         this.name = name;
     }
 
+    public String getAppearance() {
+        return appearance;
+    }
+
+    public void setAppearance(String appearance) {
+        this.appearance = appearance;
+    }
+
     public String getType() {
         return type;
     }
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public String getSize() {
+        return size;
+    }
+
+    public void setSize(String size) {
+        this.size = size;
     }
 
     public int getHp() {
@@ -51,52 +81,20 @@ public class Pokemon {
         this.defense = defense;
     }
 
-    public int getSpecialAttack() {
-        return specialAttack;
-    }
-
-    public void setSpecialAttack(int specialAttack) {
-        this.specialAttack = specialAttack;
-    }
-
-    public int getSpecialDefense() {
-        return specialDefense;
-    }
-
-    public void setSpecialDefense(int specialDefense) {
-        this.specialDefense = specialDefense;
-    }
-
-    public int getSpeed() {
-        return speed;
-    }
-
-    public void setSpeed(int speed) {
-        this.speed = speed;
-    }
-
-    public String getAbilities() {
-        return abilities;
-    }
-
-    public void setAbilities(String abilities) {
-        this.abilities = abilities;
-    }
-
     @Override
     public String toString() {
         return "Pokemon{" +
-                "name='" + name + '\'' +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", appearance='" + appearance + '\'' +
                 ", type='" + type + '\'' +
+                ", size='" + size + '\'' +
                 ", hp=" + hp +
                 ", attack=" + attack +
                 ", defense=" + defense +
-                ", specialAttack=" + specialAttack +
-                ", specialDefense=" + specialDefense +
-                ", speed=" + speed +
-                ", abilities='" + abilities + '\'' +
                 '}';
     }
+
     public boolean isFainted() {
         return getCurrentHealth() == 0;
     }
@@ -116,4 +114,29 @@ public class Pokemon {
         return null;
     }
 
+    public int getLevel() {
+        return 0;
+    }
+
+    public int getOwner() {
+        return 0;
+    }
 }
+
+
+//    Този код дефинира Pokemonкласа, който представлява Pokémon в играта. Има променливи за
+//    екземпляри за съхраняване на ID на Pokémon, име, външен вид, тип, размер, точки за здраве (HP),
+//    атака и защита. Той също така има гетери и сетери за тези променливи на екземпляра.
+//
+//        Методът toString()е заменен, за да върне низово представяне на атрибутите на Pokémon.
+//
+//        Методът isFainted()връща true, ако текущите точки за здраве на Pokémon са 0, което показва,
+//        че е припаднал.
+//
+//        Методът takeDamage(int damage)намалява здравните точки на Pokémon с даденото количество щети.
+//
+//        Методът getCurrentHealth()връща текущите здравни точки на Pokémon.
+//
+//        Методът getAttacks()връща масива от атаки на Pokémon.
+//
+//        Методът getLevel()връща нивото на Pokémon, но винаги връща 0 в текущата реализация.
