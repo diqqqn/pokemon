@@ -35,7 +35,7 @@ public class PokemonController {
     }
 
     @PostMapping("/add")
-    public String add(@ModelAttribute("pokemon") PokemonEntity pokemon, Model model) {
+    public String add(@ModelAttribute("pokemon") PokemonEntity pokemon) {
         pRepository.save(pokemon);
         return "redirect:/list";
     }
