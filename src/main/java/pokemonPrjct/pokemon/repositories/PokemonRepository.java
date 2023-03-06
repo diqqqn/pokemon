@@ -13,3 +13,7 @@ public interface PokemonRepository extends JpaRepository<Pokemon, Long> {
     // Find a Pokemon by its name
     Optional<Pokemon> findByName(String name);
 }
+
+
+//Pokemon entity that JpaRepository interface findByName whichPokemon object
+// @Repository annotation
