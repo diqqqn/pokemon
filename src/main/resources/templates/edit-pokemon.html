@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Pokemon</title>
+</head>
+<body>
+    <h1>Edit Pokemon</h1>
+    <form th:action="@{/edit}" th:object="${pokemon}" method="post" enctype="multipart/form-data">
+        <input type="hidden" th:field="*{id}"/>
+
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" th:field="*{name}" required><br>
+
+        <!-- <label for="description">Description:</label>
+        <input type="text" id="description" name="description" th:field="*{description}" required><br>
+
+        <label for="attack">Attack:</label>
+        <input type="number" id="attack" name="attack" th:field="*{attack}" min="0" required><br>
+
+        <label for="protection">Protection:</label>
+        <input type="number" id="protection" name="protection" th:field="*{protection}" min="0" required><br>
+
+        <label for="life">Life:</label>
+        <input type="number" id="life" name="life" th:field="*{life}" min="0" required><br>
+
+        <label for="appearance">Appearance:</label>
+        <input type="text" id="appearance" name="appearance" th:field="*{appearance}" required><br>
+
+        <label for="size">Size:</label>
+        <select id="size" name="size" th:field="*{size}" required>
+            <option value="Small">Small</option>
+            <option value="Normal">Normal</option>
+            <option value="Big">Big</option>
+        </select><br>
+
+        <label for="size">Size:</label>
+        <select id="size" name="size" th:field="*{size}" required>
+            <option value="Small">Small</option>
+            <option value="Normal">Normal</option>
+            <option value="Big">Big</option>
+        </select><br>
+
+        <label for="image">Image:</label>
+        <input type="file" id="image" name="image" accept=".jpg,.jpeg,.png"><br> -->
+
+        <input type="submit" value="Save Changes">
+    </form>
+</body>
+</html>

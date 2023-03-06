@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>List</title>
+</head>
+<body>
+  <a href="/add-pokemon"> добави покемон </a>
+  <div class="center" style="text-align: center;">
+  <h1>Pokemon List</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>EDIT</th>
+        <th>NAME</th>
+        <th>NAME</th>
+        <th>DESCRIPTION</th>
+        <th>IMAGE</th>
+        <th>DELETE</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr th:each="pList : ${pokemonList}">
+        <th:block th:if="${pList.getWhoIsIt() == T(pokemonPrjct.classes.WhoPokemonIs).Coach}">
+        <td><a th:href="@{/edit/{id}(id=${pList.id})}">Edit</a></td>
+        <td th:text="${pList.name}"></td>
+        <td th:text="${pList.description}"></td>
+        <td><img th:src="@{'/images/' + ${pList.picPath}}" th:alt="${pList.picPath}" /></td>
+        <td><a th:href="@{/delete/{id}(id=${pList.id})}">Delete</a></td>
+      </th:block>
+
+      
+      
+    
+      
+    </tbody>
+  </table>
+  </div>
+</body>
+</html>

@@ -1,65 +1,11 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
   <title>Pokemon Game</title>
-  <link rel="stylesheet" th:href="@{/static/style.css}">
 </head>
 <body>
 <h1>Welcome to the Pokemon Game</h1>
 
-<form action="#" method="post">
-  <label for="pokemon1">Select your first Pokemon:</label>
-  <select id="pokemon1" name="pokemon1">
-    <option value="Clefairy">Clefairy</option>
-    <option value="Gyarados">Gyarados</option>
-    <option value="Hitmonchan">Hitmonchan</option>
-    <option value="Machamp">Machamp</option>
-    <option value="Magneton">Magneton</option>
-    <option value="Mewtwo">Mewtwo</option>
-    <option value="Nidoking">Nidoking</option>
-    <option value="Ninetales">Ninetales</option>
-    <option value="Poliwrath">Poliwrath</option>
-    <option value="Raichu">Raichu</option>
-  </select>
-
-  <label for="pokemon2">Select your second Pokemon:</label>
-  <select id="pokemon2" name="pokemon2">
-    <option value="Clefairy">Clefairy</option>
-    <option value="Gyarados">Gyarados</option>
-    <option value="Hitmonchan">Hitmonchan</option>
-    <option value="Machamp">Machamp</option>
-    <option value="Magneton">Magneton</option>
-    <option value="Mewtwo">Mewtwo</option>
-    <option value="Nidoking">Nidoking</option>
-    <option value="Ninetales">Ninetales</option>
-    <option value="Poliwrath">Poliwrath</option>
-    <option value="Raichu">Raichu</option>
-  </select>
-
-  <label for="pokemon3">Select your third Pokemon:</label>
-  <select id="pokemon3" name="pokemon3">
-    <option value="Clefairy">Clefairy</option>
-    <option value="Gyarados">Gyarados</option>
-    <option value="Hitmonchan">Hitmonchan</option>
-    <option value="Machamp">Machamp</option>
-    <option value="Magneton">Magneton</option>
-    <option value="Mewtwo">Mewtwo</option>
-    <option value="Nidoking">Nidoking</option>
-    <option value="Ninetales">Ninetales</option>
-    <option value="Poliwrath">Poliwrath</option>
-    <option value="Raichu">Raichu</option>
-  </select>
-
-  <input type="submit" value="Start Game">
-</form>
-
-<div th:each="pokemon : ${pokemonList}">
-  <h2 th:text="${pokemon.getName()}"></h2>
-  <img th:src="@{${pokemon.getImageUrl()}}" th:alt="${pokemon.getName()}">
-  <p>HP: <span th:text="${pokemon.getHp()}"></span></p>
-  <p>Abilities: <span th:text="${pokemon.getAbilities()}"></span></p>
-</div>
 
 </body>
 </html>

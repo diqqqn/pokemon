@@ -1,4 +1,4 @@
-package pokemonPrjct.pokemon;
+package pokemonPrjct;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
