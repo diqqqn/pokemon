@@ -7,8 +7,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
 
 import pokemonPrjct.entities.PokemonEntity;
 import pokemonPrjct.repositories.PokemonRepository;
@@ -39,12 +37,6 @@ public class PokemonController {
         pRepository.save(pokemon);
         return "redirect:/list";
     }
-
-    // @PostMapping("/add")
-    // public String handleFileUpload(@RequestParam("file") MultipartFile file) {
-    // uPicService.UploadPicInImageAndWriteInDB(file);
-    // return "redirect:/list";
-    // }
 
     @GetMapping("/edit/{id}")
     public String showEditForm(@PathVariable("id") int id, Model model) {
