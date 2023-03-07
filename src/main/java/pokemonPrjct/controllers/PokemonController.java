@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import pokemonPrjct.entities.PokemonEntity;
 import pokemonPrjct.repositories.PokemonRepository;
@@ -32,9 +34,17 @@ public class PokemonController {
         return "add-pokemon";
     }
 
+    // @PostMapping("/add")
+    // public String add(@ModelAttribute("pokemon") PokemonEntity pokemon) {
+    // pRepository.save(pokemon);
+    // return "redirect:/list";
+    // }
+
     @PostMapping("/add")
-    public String add(@ModelAttribute("pokemon") PokemonEntity pokemon) {
-        pRepository.save(pokemon);
+    public String add(@RequestParam("picPath") MultipartFile file) {
+        PokemonEntity pke = new PokemonEntity();
+        pke.setPicPath(file.getOriginalFilename());
+        pRepository.save(pke);
         return "redirect:/list";
     }
 
