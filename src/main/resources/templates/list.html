@@ -1,8 +1,13 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="">
 <head>
   <title>List</title>
   <style>
+  body {
+      background-image: url('background.jpg');
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
     .card-container {
   display: flex;
   flex-wrap: wrap;
@@ -11,25 +16,25 @@
 }
 
 .card {
-  width: 240px;
-  height: 325px;
+  width: 220px;
+  height: 300px;
   background-color: #005cb9;
   border: 2px solid #005cb9;
   display: inline-block;
-  border-radius: 10px;
+  border-radius: 20px;
   box-shadow: 0 0 10px #005cb9;
   position: relative;
   overflow: hidden;
-  margin-right: 10px;
-  transition: top 0.3s ease-in-out;
+  margin-right: 50px;
+  transition: top 0.5s ease-in-out;
 }
 
 .card:nth-child(-n+1) {
-  margin-top: 100px; 
+  margin-top: 100px;
 }
 
 .card:nth-child(n+2) {
-  margin-top: 55px; 
+  margin-top: 55px;
 }
 
 
@@ -147,48 +152,48 @@ margin-left: -200px;
   </style>
 </head>
 <body>
-  <a href="/add-pokemon"> добави покемон </a>
-  <div class="center" style="text-align: center;">
+<a href="/add-pokemon"> добави покемон </a>
+<div class="center" style="text-align: center;">
   <h1>Pokemon List</h1>
-  
-      <th:block th:each="pList : ${pokemonList}">
-        <th:block th:if="${pList.getWhoIsIt() == T(pokemonPrjct.classes.WhoPokemonIs).Coach}">
-        
-        
-        <div class="card" th:id="@{{id}(id=${pList.id})}">
-          <a class="edit" th:href="@{/edit/{id}(id=${pList.id})}"><img th:src="@{'/images/ico/edit2.png'}"></a>
-          <a class="delete" th:href="@{/delete/{id}(id=${pList.id})}"><img th:src="@{'/images/ico/delete.png'}"></a>
-          <img src="https://source.unsplash.com/random/225x315" alt="Card Image">
-          <div class="card-text">
-            <h3 th:text="${pList.name}"></h3>
-            <p name="dec" th:text="${pList.description}"></p>
-            <div class="stats">
-              <div class="attack">
-                <span>ATK</span>
-                <span th:text="${pList.attack}"></span>
-              </div>
-              <div class="defense">
-                <span>DEF</span>
-                <span th:text="${pList.protection}"></span>
-              </div>
-              <div class="life-points">
-                <span>LP</span>
-                <span th:text="${pList.life}"></span>
-              </div>
+
+  <th:block th:each="pList : ${pokemonList}">
+    <th:block th:if="${pList.getWhoIsIt() == T(pokemonPrjct.classes.WhoPokemonIs).Coach}">
+
+
+      <div class="card" th:id="@{{id}(id=${pList.id})}">
+        <a class="edit" th:href="@{/edit/{id}(id=${pList.id})}"><img th:src="@{'/images/ico/edit2.png'}"></a>
+        <a class="delete" th:href="@{/delete/{id}(id=${pList.id})}"><img th:src="@{'/images/ico/delete.png'}"></a>
+        <img src="https://source.unsplash.com/random/225x315" alt="Card Image">
+        <div class="card-text">
+          <h3 th:text="${pList.name}"></h3>
+          <p name="dec" th:text="${pList.description}"></p>
+          <div class="stats">
+            <div class="attack">
+              <span>ATK</span>
+              <span th:text="${pList.attack}"></span>
+            </div>
+            <div class="defense">
+              <span>DEF</span>
+              <span th:text="${pList.protection}"></span>
+            </div>
+            <div class="life-points">
+              <span>LP</span>
+              <span th:text="${pList.life}"></span>
             </div>
           </div>
-            </div>
-        <!-- <td th:text="${pList.name}"></td>
-        <td th:text="${pList.description}"></td>
-        <td><img th:src="@{'/images/' + ${pList.picPath}}" th:alt="${pList.picPath}" /></td> -->
-        
-      </th:block>
-    </th:block>
-    
+        </div>
+      </div>
+      <!-- <td th:text="${pList.name}"></td>
+      <td th:text="${pList.description}"></td>
+      <td><img th:src="@{'/images/' + ${pList.picPath}}" th:alt="${pList.picPath}" /></td> -->
 
-      <button id="play-button" style="display: none;">Играй</button>
-    
-    <script>
+    </th:block>
+  </th:block>
+
+
+  <button id="play-button" style="display: none;">Играй</button>
+
+  <script>
       const cards = document.querySelectorAll('.card');
 const playButton = document.querySelector('#play-button');
 let selectedCards = [];
@@ -219,13 +224,13 @@ cards.forEach(card => {
 });
 
 playButton.addEventListener("click", function() {
-  window.location.href = "./arena.html"; 
+  window.location.href = "./arena.html";
 });
 
     </script>
-      
-    
-      
-  </div>
+
+
+
+</div>
 </body>
 </html>
