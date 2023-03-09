@@ -1,6 +1,9 @@
 package pokemonPrjct.controllers;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -40,20 +43,13 @@ public class PokemonController {
         return "redirect:/list";
     }
 
-    // @GetMapping("/arena")
-    // public String arena() {
-    // return "arena";
-    // }
-
     @PostMapping("/arena")
-    public String processFormArena(@RequestParam("card1") String card1,
-            @RequestParam("card2") String card2,
-            @RequestParam("card3") String card3,
+    public String processFormArena(@RequestParam("card1") int card1,
+            @RequestParam("card2") int card2,
+            @RequestParam("card3") int card3,
             Model model) {
-
-        model.addAttribute("card1", card1);
-        model.addAttribute("card2", card2);
-        model.addAttribute("card3", card3);
+        List<PokemonEntity> pokemons = pRepository.findPokemonsByIds(card1, card2, card3);
+        model.addAttribute("myPoke", pokemons);
         return "arena";
     }
 
