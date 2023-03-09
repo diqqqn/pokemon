@@ -40,6 +40,23 @@ public class PokemonController {
         return "redirect:/list";
     }
 
+    // @GetMapping("/arena")
+    // public String arena() {
+    // return "arena";
+    // }
+
+    @PostMapping("/arena")
+    public String processFormArena(@RequestParam("card1") String card1,
+            @RequestParam("card2") String card2,
+            @RequestParam("card3") String card3,
+            Model model) {
+
+        model.addAttribute("card1", card1);
+        model.addAttribute("card2", card2);
+        model.addAttribute("card3", card3);
+        return "arena";
+    }
+
     // @PostMapping("/add")
     // public String add(@RequestParam("picPath") MultipartFile file) {
     // PokemonEntity pke = new PokemonEntity();

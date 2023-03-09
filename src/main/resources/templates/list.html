@@ -3,11 +3,11 @@
 <head>
   <title>List</title>
   <style>
-  body {
+  /* body {
       background-image: url('background.jpg');
       background-repeat: no-repeat;
       background-size: cover;
-    }
+    } */
     .card-container {
   display: flex;
   flex-wrap: wrap;
@@ -21,7 +21,7 @@
   background-color: #005cb9;
   border: 2px solid #005cb9;
   display: inline-block;
-  border-radius: 20px;
+  border-radius: 10px;
   box-shadow: 0 0 10px #005cb9;
   position: relative;
   overflow: hidden;
@@ -149,10 +149,31 @@ margin-left: -200px;
   float:right;
   border-radius: 50%;
 }
+.addPokemon{
+  background-color: tomato;
+  font-size: large;
+  color: #fff;
+  text-align: center;
+}
+.ad{
+background-color:tomato;
+width:100px;
+line-height: 50px;
+height:50px;
+text-align:center;
+font-size: large;
+}
+.ad a{
+color:#fff;
+text-decoration: none;
+}
   </style>
 </head>
 <body>
-<a href="/add-pokemon"> добави покемон </a>
+
+  <div class="ad">
+  <a href="/add-pokemon">добави покемон </a>
+  </div>  
 <div class="center" style="text-align: center;">
   <h1>Pokemon List</h1>
 
@@ -190,14 +211,21 @@ margin-left: -200px;
     </th:block>
   </th:block>
 
+    <form th:action="@{/arena}" method="post" enctype="multipart/form-data">
+    <input type="hidden" id="card1" name="card1">
+    <input type="hidden" id="card2" name="card2">
+    <input type="hidden" id="card3" name="card3">
+    <input type="submit" id="play-button" style="display: none;" value="Играй">
+    </form>
 
-  <button id="play-button" style="display: none;">Играй</button>
 
   <script>
-      const cards = document.querySelectorAll('.card');
+
+const cards = document.querySelectorAll('.card');
 const playButton = document.querySelector('#play-button');
 let selectedCards = [];
 let selecCardCount = 3;
+let valueCardNum = 1;
 
 cards.forEach(card => {
   card.addEventListener('click', () => {
@@ -206,13 +234,15 @@ cards.forEach(card => {
       card.classList.remove('selected');
       selectedCards = selectedCards.filter(selectedCard => selectedCard !== card);
 	  card.classList.remove('move-up');
+    valueCardNum--;
     } else if (selectedCards.length < selecCardCount) {
       card.classList.add('selected');
 	  const isMovedUp = card.classList.contains('move-up');
 	  card.classList.add('move-up');
 	  const id = card.id;
-	  console.log(`Clicked card ID: ${id}`);
-      selectedCards.push(card);
+    selectedCards.push(card);
+    document.getElementById("card"+valueCardNum).value = card.id;
+    valueCardNum++;
     }
 
 	if (selectedCards.length === 3) {
@@ -223,9 +253,10 @@ cards.forEach(card => {
   });
 });
 
-playButton.addEventListener("click", function() {
-  window.location.href = "./arena.html";
-});
+// playButton.addEventListener("click", function() {
+//   console.log(selectedCards.join());
+//   window.location.href = "./arena";
+// });
 
     </script>
 
