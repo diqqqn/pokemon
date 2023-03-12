@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Add New Pokemon</title>
@@ -17,7 +17,7 @@
 </head>
 <body>
 <h1>Add New Pokemon</h1>
-<form  th:action="@{/add}" method="POST" th:object="${pokemon}" enctype="multipart/form-data">
+<form th:action="@{/add}" method="POST" th:object="${pokemon}" enctype="multipart/form-data" th:method="POST">
 
     <label for="name">Name:</label>
     <input type="text" id="name" name="name" required><br>
@@ -57,8 +57,10 @@
         <option value="Big">Big</option>
     </select><br>
 
+<!--    <label for="picPath">Image:</label>-->
+<!--    <input type="text" id="picPath" name="picPath" required><br>-->
     <label for="picPath">Image:</label>
-    <input type="text" id="picPath" name="picPath" required><br>
+    <input type="file" id="picPath" name="picPath" accept="image/jpeg" required directory="static/images/pokemons/">
 
     <input type="submit" value="Add Pokemon">
 </form>
