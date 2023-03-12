@@ -1,3 +1,4 @@
+// PokemonController.java
 package pokemonPrjct.controllers;
 
 import java.util.List;
@@ -10,8 +11,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import pokemonPrjct.entities.PokemonEntity;
 import pokemonPrjct.repositories.PokemonRepository;
@@ -19,9 +22,10 @@ import pokemonPrjct.services.UploadPicService;
 
 @Controller
 public class PokemonController {
-
+   // private static final String UPLOAD_DIR = "static/images/pokemons/";
     @Autowired
     private PokemonRepository pRepository;
+
     @Autowired
     private UploadPicService uPicService;
 
@@ -52,6 +56,7 @@ public class PokemonController {
         model.addAttribute("myPoke", pokemons);
         return "arena";
     }
+
 
     // @PostMapping("/add")
     // public String add(@RequestParam("picPath") MultipartFile file) {
