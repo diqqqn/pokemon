@@ -1,0 +1,57 @@
+body {
+  background-image: url('/images/pokemons/background.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  margin: 0;
+}
+
+h1 {
+  text-align: center;
+}
+
+form {
+  max-width: 500px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+label {
+  display: block;
+  margin: 10px 0;
+  color: Black;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+
+input[type="text"], input[type="number"], select {
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  width: 100%;
+  margin: 10px 0;
+  background-color: green;
+  color: Black;
+}
+
+
+input[type="submit"] {
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: Black;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+input[type="submit"]:hover {
+  background-color: #3e8e41;
+}
+
+.error {
+  color: red;
+  margin-top: 5px;
+}
