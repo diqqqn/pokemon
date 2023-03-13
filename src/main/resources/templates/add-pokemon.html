@@ -6,18 +6,17 @@
 
     <link rel="stylesheet" type="text/css" href="/css/style_addPokemon.css">
 
-
     <style>
     /* body {
         background-image: url('background.jpg');
         background-repeat: no-repeat;
         background-size: cover;
     } */
-</style>
+    </style>
 </head>
 <body>
 <h1>Add New Pokemon</h1>
-<form th:action="@{/add}" method="POST" th:object="${pokemon}" enctype="multipart/form-data" th:method="POST">
+<form th:action="@{/add}" method="POST" th:object="${pokemon}" enctype="multipart/form-data">
 
     <label for="name">Name:</label>
     <input type="text" id="name" name="name" required><br>
@@ -37,7 +36,7 @@
     <label for="appearance">Appearance:</label>
     <input type="text" id="appearance" name="appearance" required><br>
 
-    <label for="whoIsIt">Оwner:</label>
+    <label for="whoIsIt">Owner:</label>
     <select id="whoIsIt" name="whoIsIt" required>
         <option value="Coach">Coach</option>
         <option value="PC">PC</option>
@@ -57,12 +56,11 @@
         <option value="Big">Big</option>
     </select><br>
 
-<!--    <label for="picPath">Image:</label>-->
-<!--    <input type="text" id="picPath" name="picPath" required><br>-->
     <label for="picPath">Image:</label>
-    <input type="file" id="picPath" name="picPath" accept="image/jpeg" required directory="static/images/pokemons/">
+    <input type="file" id="picPath" name="picPath" accept="image/jpeg" required>
 
     <input type="submit" value="Add Pokemon">
 </form>
+
 </body>
 </html>

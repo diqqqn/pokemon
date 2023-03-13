@@ -123,5 +123,4 @@ public class PokemonEntity {
     public void setAppearance(String appearance) {
         this.appearance = appearance;
     }
-
 }

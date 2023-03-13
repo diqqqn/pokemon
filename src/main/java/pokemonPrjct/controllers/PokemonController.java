@@ -2,7 +2,10 @@
 package pokemonPrjct.controllers;
 
 import java.util.List;
-
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.Files;
+import java.io.IOException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Controller;
@@ -41,15 +44,22 @@ public class PokemonController {
         return "add-pokemon";
     }
 
-
-
-
-//    @PostMapping("/add")
-//    public String add(@ModelAttribute("pokemon") PokemonEntity pokemon) {
-//        pRepository.save(pokemon);
-//        return "redirect:/list";
-//    }
-
+    @PostMapping("/addPokemon")
+    public String addPokemon(@ModelAttribute("pokemon") PokemonEntity pokemon,
+                             @RequestParam("file") MultipartFile file) {
+        if (!file.isEmpty()) {
+            try {
+                byte[] bytes = file.getBytes();
+                Path path = Paths.get("/path/to/save/file/" + file.getOriginalFilename());
+                Files.write(path, bytes);
+                pokemon.setPicPath(path.toString());
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        pRepository.save(pokemon);
+        return "redirect:/pokemons";
+    }
 
 
     @PostMapping("/add")
@@ -92,14 +102,22 @@ public class PokemonController {
     }
 
     @PostMapping("/edit")
-    public String processEditForm(@ModelAttribute("pokemon") PokemonEntity pokemon) {
+    public String processEditForm(@ModelAttribute("pokemon") PokemonEntity pokemon,
+                                  @RequestParam("pic") MultipartFile file,
+                                  Model model) {
+
+        // Save the uploaded image and set the picPath property of the PokemonEntity instance
+        String imagePath = uPicService.savePic(file);
+        pokemon.setPicPath(imagePath);
+
+        // Save the edited PokemonEntity instance to the database
         pRepository.save(pokemon);
+
+        // Retrieve all Pokemon entities from the database and add them to the model
+        List<PokemonEntity> pokemonList = (List<PokemonEntity>) pRepository.findAll();
+        model.addAttribute("pokemonList", pokemonList);
+
         return "redirect:/list";
     }
 
-    @GetMapping("/delete/{id}")
-    public String deletePokemon(@PathVariable("id") int id) {
-        pRepository.deleteById(id);
-        return "redirect:/list";
-    }
 }

@@ -2,11 +2,13 @@ package pokemonPrjct.services;
 
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.util.Base64;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
@@ -14,13 +16,14 @@ import org.springframework.web.multipart.MultipartFile;
 import pokemonPrjct.entities.PokemonEntity;
 import pokemonPrjct.repositories.PokemonRepository;
 
-import javax.persistence.criteria.Path;
-
 @Service
 public class UploadPicService {
 
     @Autowired
     private PokemonRepository pRepository;
+
+    @Value("${upload.path}")
+    private String uploadPath;
 
     public void uploadPicAndSaveInDB(MultipartFile file) {
         PokemonEntity pEntity = new PokemonEntity();
@@ -45,14 +48,13 @@ public class UploadPicService {
         }
         try {
             // Specify the directory where the file should be saved
-            String uploadDir = "/path/to/upload/dir/";
-            Path uploadPath = (Path) Paths.get(uploadDir);
-            if (!Files.exists((java.nio.file.Path) uploadPath)) {
-                Files.createDirectories((java.nio.file.Path) uploadPath);
+            Path uploadDir = Paths.get(uploadPath);
+            if (!Files.exists(uploadDir)) {
+                Files.createDirectories(uploadDir);
             }
             // Save the file to the directory
-            Path filePath = (Path) ((java.nio.file.Path) uploadPath).resolve(fileName);
-            Files.copy((java.nio.file.Path) file.getInputStream(), (java.nio.file.Path) filePath, StandardCopyOption.REPLACE_EXISTING);
+            Path filePath = uploadDir.resolve(fileName);
+            Files.copy(file.getInputStream(), filePath, StandardCopyOption.REPLACE_EXISTING);
             return filePath.toString();
         } catch (IOException e) {
             e.printStackTrace();
