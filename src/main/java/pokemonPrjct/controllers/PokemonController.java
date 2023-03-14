@@ -61,12 +61,8 @@ public class PokemonController {
             Model model) {
         List<PokemonEntity> pokemons = pRepository.findPokemonsByIds(card1, card2, card3);
         model.addAttribute("myPoke", pokemons);
-<<<<<<< HEAD
 
         List<PokemonEntity> pokemonsEnemy = pRepository.findRandomPCPokemons();
-=======
-        List<PokemonEntity> pokemonsEnemy = pRepository.findRandomPCPokemonId();
->>>>>>> 8f5cce38c9cb07f40a3b7e6324bd34d414a9c4cc
         model.addAttribute("enemyPoke", pokemonsEnemy);
         return "arena";
     }
