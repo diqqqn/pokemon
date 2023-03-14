@@ -1,4 +1,3 @@
-// PokemonController.java
 package pokemonPrjct.controllers;
 
 import java.util.List;
@@ -22,12 +21,12 @@ import pokemonPrjct.services.UploadPicService;
 
 @Controller
 public class PokemonController {
-    // private static final String UPLOAD_DIR = "static/images/pokemons/";
+
     @Autowired
     private PokemonRepository pRepository;
 
-    @Autowired
-    private UploadPicService uPicService;
+    // @Autowired
+    // private UploadPicService uPicService;
 
     @GetMapping("/list")
     public String getPokemonList(Model model) {
