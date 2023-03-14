@@ -3,15 +3,6 @@
 <head>
   <title>List</title>
   <style>
-<<<<<<< HEAD
-
-=======
-  body {
-      background-image: url('/images/pokemons/background.jpg');
-      background-repeat: no-repeat;
-      background-size: cover;
-    }
->>>>>>> 8f5cce38c9cb07f40a3b7e6324bd34d414a9c4cc
     .card-container {
   display: flex;
   flex-wrap: wrap;
@@ -25,7 +16,7 @@
   background-color: #005cb9;
   border: 2px solid #005cb9;
   display: inline-block;
-  border-radius: 20px;
+  border-radius: 10px;
   box-shadow: 0 0 10px #005cb9;
   position: relative;
   overflow: hidden;
@@ -153,8 +144,6 @@ margin-left: -200px;
   float:right;
   border-radius: 50%;
 }
-<<<<<<< HEAD
-
 .addPokemon{
   background-color: tomato;
   font-size: large;
@@ -179,12 +168,7 @@ text-decoration: none;
   <div class="ad">
     <a href="/add-pokemon">добави покемон </a>
     </div>  
-=======
-  </style>
-</head>
-<body>
-<a href="/add-pokemon"> добави покемон </a>
->>>>>>> 8f5cce38c9cb07f40a3b7e6324bd34d414a9c4cc
+    
 <div class="center" style="text-align: center;">
   <h1>Pokemon List</h1>
 
@@ -222,7 +206,6 @@ text-decoration: none;
     </th:block>
   </th:block>
 
-<<<<<<< HEAD
   <form th:action="@{/arena}" method="post" enctype="multipart/form-data">
     <input type="hidden" id="card1" name="card1">
     <input type="hidden" id="card2" name="card2">
@@ -230,67 +213,39 @@ text-decoration: none;
     <input type="submit" id="play-button" style="display: none;" value="Играй">
     </form>
 
-  <script>
-const cards = document.querySelectorAll('.card');
-const playButton = document.querySelector('#play-button');
-let selectedCards = [];
-let selecCardCount = 3;
-let valueCardNum = 1;
-=======
+<script>
+    const cards = document.querySelectorAll('.card');
+    const playButton = document.querySelector('#play-button');
+    let selectedCards = [];
+    let selecCardCount = 3;
+    let valueCardNum = 1;
 
-  <button id="play-button" style="display: none;">Играй</button>
+    cards.forEach(card => {
+      card.addEventListener('click', () => {
 
-  <script>
-      const cards = document.querySelectorAll('.card');
-const playButton = document.querySelector('#play-button');
-let selectedCards = [];
-let selecCardCount = 3;
+      if (selectedCards.includes(card)) {
+          card.classList.remove('selected');
+          selectedCards = selectedCards.filter(selectedCard => selectedCard !== card);
+        card.classList.remove('move-up');
+        } else if (selectedCards.length < selecCardCount) {
+          card.classList.add('selected');
+        const isMovedUp = card.classList.contains('move-up');
+        card.classList.add('move-up');
+        const id = card.id;
+        document.getElementById("card"+valueCardNum).value = card.id;
+        valueCardNum++;
+        selectedCards.push(card);
+        }
 
->>>>>>> 8f5cce38c9cb07f40a3b7e6324bd34d414a9c4cc
-cards.forEach(card => {
-  card.addEventListener('click', () => {
+      if (selectedCards.length === 3) {
+          playButton.style.display = 'block';
+        } else {
+          playButton.style.display = 'none';
+        }
+      });
+    });
 
-	if (selectedCards.includes(card)) {
-      card.classList.remove('selected');
-      selectedCards = selectedCards.filter(selectedCard => selectedCard !== card);
-	  card.classList.remove('move-up');
-    } else if (selectedCards.length < selecCardCount) {
-      card.classList.add('selected');
-	  const isMovedUp = card.classList.contains('move-up');
-	  card.classList.add('move-up');
-	  const id = card.id;
-<<<<<<< HEAD
-    document.getElementById("card"+valueCardNum).value = card.id;
-    valueCardNum++;
-    selectedCards.push(card);
-=======
-	  console.log(`Clicked card ID: ${id}`);
-      selectedCards.push(card);
->>>>>>> 8f5cce38c9cb07f40a3b7e6324bd34d414a9c4cc
-    }
-
-	if (selectedCards.length === 3) {
-      playButton.style.display = 'block';
-    } else {
-      playButton.style.display = 'none';
-    }
-  });
-});
-
-<<<<<<< HEAD
-// playButton.addEventListener("click", function() {
-//   console.log(selectedCards.join());
-//   window.location.href = "./arena";
-// });
-=======
-playButton.addEventListener("click", function() {
-  window.location.href = "./arena.html";
-});
-
->>>>>>> 8f5cce38c9cb07f40a3b7e6324bd34d414a9c4cc
-    </script>
-
-
+</script>
 
 </div>
 </body>
