@@ -3,6 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>Add New Pokemon</title>
+
+    <link rel="stylesheet" type="text/css" href="/css/style_addPokemon.css">
+
+
     <style>
     /* body {
         background-image: url('background.jpg');
@@ -12,51 +16,51 @@
 </style>
 </head>
 <body>
-    <h1>Add New Pokemon</h1>
-    <form  th:action="@{/add}" method="POST" th:object="${pokemon}" enctype="multipart/form-data">
-        
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" required><br>
-<!-- 
-        <label for="description">Description:</label>
-        <input type="text" id="description" name="description" required><br>
+<h1>Add New Pokemon</h1>
+<form  th:action="@{/add}" method="POST" th:object="${pokemon}" enctype="multipart/form-data">
 
-        <label for="attack">Attack:</label>
-        <input type="number" id="attack" name="attack" min="0" required><br>
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" required><br>
 
-        <label for="protection">Protection:</label>
-        <input type="number" id="protection" name="protection" min="0" required><br> -->
+    <label for="description">Description:</label>
+    <input type="text" id="description" name="description" required><br>
 
-        <!-- <label for="life">Life:</label>
-        <input type="number" id="life" name="life" min="0" required><br> -->
+    <label for="attack">Attack:</label>
+    <input type="number" id="attack" name="attack" min="0" required><br>
 
-        <!-- <label for="appearance">Appearance:</label>
-        <input type="text" id="appearance" name="appearance" required><br> -->
-      
-        <!-- <label for="whoIsIt">Оwner:</label>
-        <select id="whoIsIt" name="whoIsIt" required>
-            <option value="Coach">Coach</option>
-            <option value="PC">PC</option>
-        </select><br> 
+    <label for="protection">Protection:</label>
+    <input type="number" id="protection" name="protection" min="0" required><br>
 
-        <label for="pType">Type:</label>
-        <select id="pType" name="pType" required>
-            <option value="Water">Water</option>
-            <option value="Electric">Electric</option>
-            <option value="Fire">Fire</option>
-        </select><br> -->
+    <label for="life">Life:</label>
+    <input type="number" id="life" name="life" min="0" required><br>
 
-        <!-- <label for="size">Size:</label>
-        <select id="size" name="size" required>
-            <option value="Small">Small</option>
-            <option value="Normal">Normal</option>
-            <option value="Big">Big</option>
-        </select><br> -->
+    <label for="appearance">Appearance:</label>
+    <input type="text" id="appearance" name="appearance" required><br>
 
-        <!-- <label for="picPath">Image:</label>
-        <input type="text" id="picPath" name="picPath" required><br> -->
+    <label for="whoIsIt">Оwner:</label>
+    <select id="whoIsIt" name="whoIsIt" required>
+        <option value="Coach">Coach</option>
+        <option value="PC">PC</option>
+    </select><br>
 
-        <input type="submit" value="Add Pokemon">
-    </form>
+    <label for="pType">Type:</label>
+    <select id="pType" name="pType" required>
+        <option value="Water">Water</option>
+        <option value="Electric">Electric</option>
+        <option value="Fire">Fire</option>
+    </select><br>
+
+    <label for="size">Size:</label>
+    <select id="size" name="size" required>
+        <option value="Small">Small</option>
+        <option value="Normal">Normal</option>
+        <option value="Big">Big</option>
+    </select><br>
+
+    <label for="picPath">Image:</label>
+    <input type="text" id="picPath" name="picPath" required><br>
+
+    <input type="submit" value="Add Pokemon">
+</form>
 </body>
 </html>
