@@ -188,75 +188,32 @@ body {
 	<div class="table-wrapper">
 			<table>
 				<tr class="enemy">
-					<td>
-						<div class="card" id=5>
-						  <img src="https://source.unsplash.com/random/225x315" alt="Card Image">
-						  <div class="card-text">
-							<h3>Card Name</h3>
-							<p>Card Description</p>
-							<div class="stats">
-							  <div class="attack">
-								<span>ATK</span>
-								<span>1000</span>
-							  </div>
-							  <div class="defense">
-								<span>DEF</span>
-								<span>500</span>
-							  </div>
-							  <div class="life-points">
-								<span>LP</span>
-								<span>8000</span>
-							  </div>
+					<th:block th:each="pList : ${enemyPoke}">
+						<td>
+							<div th:if="${pList != null}" class="card myCard" th:id="@{{id}(id=${pList != null ? pList.id : ''})}">
+							<img src="https://source.unsplash.com/random/225x315" alt="Card Image">
+							<div class="card-text">
+								<h3 th:text="${pList.name}"></h3>
+								<p name="dec" th:text="${pList.description}"></p>
+								<div class="stats">
+								<div class="attack">
+									<span>ATK</span>
+									<span th:text="${pList.attack}"></span>
+								</div>
+								<div class="defense">
+									<span>DEF</span>
+									<span th:text="${pList.protection}"></span>
+								</div>
+								<div class="life-points">
+									<span>LP</span>
+									<span th:text="${pList.life}"></span>
+								</div>
+								</div>
 							</div>
-						  </div>
-						</div>
-					</td>
-					<td>
-						<div class="card" id=6>
-						  <img src="https://source.unsplash.com/random/225x315" alt="Card Image">
-						  <div class="card-text">
-							<h3>Card Name</h3>
-							<p>Card Description</p>
-							<div class="stats">
-							  <div class="attack">
-								<span>ATK</span>
-								<span>1000</span>
-							  </div>
-							  <div class="defense">
-								<span>DEF</span>
-								<span>500</span>
-							  </div>
-							  <div class="life-points">
-								<span>LP</span>
-								<span>8000</span>
-							  </div>
 							</div>
-						  </div>
-						</div>
-					</td>
-					<td>
-						<div class="card" id=7>
-						  <img src="https://source.unsplash.com/random/225x315" alt="Card Image">
-						  <div class="card-text">
-							<h3>Card Name</h3>
-							<p>Card Description</p>
-							<div class="stats">
-							  <div class="attack">
-								<span>ATK</span>
-								<span>1000</span>
-							  </div>
-							  <div class="defense">
-								<span>DEF</span>
-								<span>500</span>
-							  </div>
-							  <div class="life-points">
-								<span>LP</span>
-								<span>8000</span>
-							  </div>
-							</div>
-						  </div>
-						</div>
-					</td>
+						</td>
+					</th:block>
+						
 				</tr>
 			</table>
 
@@ -307,7 +264,6 @@ cards.forEach(card => {
 	  const isMovedUp = card.classList.contains('move-up');
 	  card.classList.add('move-up');
 	  const id = card.id;
-	  console.log(`Clicked card ID: ${id}`);
       selectedCards.push(card);
     }
 

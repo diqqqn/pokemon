@@ -36,6 +36,13 @@ public class PokemonController {
         return "list";
     }
 
+    @GetMapping("/listEnemy")
+    public String getEnemyPokemonList(Model model) {
+        Iterable<PokemonEntity> pokemon = pRepository.findAll();
+        model.addAttribute("pokemonList", pokemon);
+        return "listEnemy";
+    }
+
     @GetMapping("/add-pokemon")
     public String addPokemon() {
         return "add-pokemon";
@@ -54,7 +61,8 @@ public class PokemonController {
             Model model) {
         List<PokemonEntity> pokemons = pRepository.findPokemonsByIds(card1, card2, card3);
         model.addAttribute("myPoke", pokemons);
-        List<PokemonEntity> pokemonsEnemy = pRepository.findRandomPCPokemonId();
+
+        List<PokemonEntity> pokemonsEnemy = pRepository.findRandomPCPokemons();
         model.addAttribute("enemyPoke", pokemonsEnemy);
         return "arena";
     }
