@@ -22,7 +22,7 @@ import pokemonPrjct.services.UploadPicService;
 
 @Controller
 public class PokemonController {
-   // private static final String UPLOAD_DIR = "static/images/pokemons/";
+    // private static final String UPLOAD_DIR = "static/images/pokemons/";
     @Autowired
     private PokemonRepository pRepository;
 
@@ -54,9 +54,10 @@ public class PokemonController {
             Model model) {
         List<PokemonEntity> pokemons = pRepository.findPokemonsByIds(card1, card2, card3);
         model.addAttribute("myPoke", pokemons);
+        List<PokemonEntity> pokemonsEnemy = pRepository.findRandomPCPokemonId();
+        model.addAttribute("enemyPoke", pokemonsEnemy);
         return "arena";
     }
-
 
     // @PostMapping("/add")
     // public String add(@RequestParam("picPath") MultipartFile file) {
