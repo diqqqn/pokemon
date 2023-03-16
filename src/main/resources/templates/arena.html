@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
 	<title>Arena</title>
 
@@ -26,11 +26,11 @@
 }
 
 .card:nth-child(-n+1) {
-  margin-top: 100px; 
+  margin-top: 100px;
 }
 
 .card:nth-child(n+2) {
-  margin-top: 55px; 
+  margin-top: 55px;
 }
 
 
@@ -130,15 +130,15 @@ margin-left: -200px;
 }
 
 
-	
-	html, 
+
+	html,
 body {
     height: 100%;
 	margin: 0 auto;
 	padding: 0 auto;
 }
 		.table-wrapper {
-			
+
 			background-color: green;
 			padding: 20px;
 			margin:0 auto;
@@ -174,28 +174,28 @@ body {
 		}
 		.me{
 			display: inline-block;
-			margin:70px 0 0 0;	
+			margin:70px 0 0 0;
 		}
 .card.move-up {
       top: -15px;
     }
 
-		
-    
+
+
 	</style>
 </head>
 <body>
-	<div class="table-wrapper">
-			<table>
-				<tr class="enemy">
-					<th:block th:each="pList : ${enemyPoke}">
-						<td>
-							<div th:if="${pList != null}" class="card myCard" th:id="@{{id}(id=${pList != null ? pList.id : ''})}">
-							<img src="https://source.unsplash.com/random/225x315" alt="Card Image">
-							<div class="card-text">
-								<h3 th:text="${pList.name}"></h3>
-								<p name="dec" th:text="${pList.description}"></p>
-								<div class="stats">
+<div class="table-wrapper">
+	<table>
+		<tr class="enemy">
+			<th:block th:each="pList : ${enemyPoke}">
+				<td>
+					<div th:if="${pList != null}" class="card myCard" th:id="@{{id}(id=${pList != null ? pList.id : ''})}">
+						<img src="https://source.unsplash.com/random/225x315" alt="Card Image">
+						<div class="card-text">
+							<h3 th:text="${pList.name}"></h3>
+							<p name="dec" th:text="${pList.description}"></p>
+							<div class="stats">
 								<div class="attack">
 									<span>ATK</span>
 									<span th:text="${pList.attack}"></span>
@@ -208,25 +208,25 @@ body {
 									<span>LP</span>
 									<span th:text="${pList.life}"></span>
 								</div>
-								</div>
 							</div>
-							</div>
-						</td>
-					</th:block>
-						
-				</tr>
-			</table>
+						</div>
+					</div>
+				</td>
+			</th:block>
 
-			<table>
-				<tr class="me">
-					<th:block th:each="pList : ${myPoke}">
-						<td>
-							<div th:if="${pList != null}" class="card myCard" th:id="@{{id}(id=${pList != null ? pList.id : ''})}">
-							<img src="https://source.unsplash.com/random/225x315" alt="Card Image">
-							<div class="card-text">
-								<h3 th:text="${pList.name}"></h3>
-								<p name="dec" th:text="${pList.description}"></p>
-								<div class="stats">
+		</tr>
+	</table>
+
+	<table>
+		<tr class="me">
+			<th:block th:each="pList : ${myPoke}">
+				<td>
+					<div th:if="${pList != null}" class="card myCard" th:id="@{{id}(id=${pList != null ? pList.id : ''})}">
+						<img src="https://source.unsplash.com/random/225x315" alt="Card Image">
+						<div class="card-text">
+							<h3 th:text="${pList.name}"></h3>
+							<p name="dec" th:text="${pList.description}"></p>
+							<div class="stats">
 								<div class="attack">
 									<span>ATK</span>
 									<span th:text="${pList.attack}"></span>
@@ -239,18 +239,18 @@ body {
 									<span>LP</span>
 									<span th:text="${pList.life}"></span>
 								</div>
-								</div>
 							</div>
-							</div>
-						</td>
-					</th:block>
-				</tr>
-			</table>
-	</div> 
-	<script>
+						</div>
+					</div>
+				</td>
+			</th:block>
+		</tr>
+	</table>
+</div>
+<script>
 		const cards = document.querySelectorAll('.myCard');
 let selectedCards = [];
-let selecCardCount = 1;
+let selectCardCount = 1;
 
 cards.forEach(card => {
   card.addEventListener('click', () => {
@@ -259,7 +259,7 @@ cards.forEach(card => {
       card.classList.remove('selected');
       selectedCards = selectedCards.filter(selectedCard => selectedCard !== card);
 	  card.classList.remove('move-up');
-    } else if (selectedCards.length < selecCardCount) {
+    } else if (selectedCards.length < selectCardCount) {
       card.classList.add('selected');
 	  const isMovedUp = card.classList.contains('move-up');
 	  card.classList.add('move-up');

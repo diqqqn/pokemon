@@ -66,13 +66,6 @@ public class PokemonController {
         return "arena";
     }
 
-    // @PostMapping("/add")
-    // public String add(@RequestParam("picPath") MultipartFile file) {
-    // PokemonEntity pke = new PokemonEntity();
-    // pke.setPicPath(file.getOriginalFilename());
-    // pRepository.save(pke);
-    // return "redirect:/list";
-    // }
 
     @GetMapping("/edit/{id}")
     public String showEditForm(@PathVariable("id") int id, Model model) {
