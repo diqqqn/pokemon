@@ -112,7 +112,7 @@ public class PokemonEntity {
         return description;
     }
 
-    public void setDesciption(String description) {
+    public void setDescription(String description) {
         this.description = description;
     }
 
