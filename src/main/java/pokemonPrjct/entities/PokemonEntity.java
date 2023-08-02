@@ -8,6 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.springframework.web.multipart.MultipartFile;
 import pokemonPrjct.classes.PType;
 import pokemonPrjct.classes.Size;
 import pokemonPrjct.classes.WhoPokemonIs;
@@ -25,7 +26,7 @@ public class PokemonEntity {
     private Integer protection;
     private Integer life;
     private String appearance;
-    private String picPath;
+    public String picPath;
 
     @Enumerated(EnumType.STRING)
     private Size size = Size.Small;
@@ -68,9 +69,10 @@ public class PokemonEntity {
         this.size = size;
     }
 
-    public String getPicPath() {
-        return picPath;
-    }
+    // Uncomment this method
+    // public String getPicPath() {
+    //     return picPath;
+    // }
 
     public void setPicPath(String picPath) {
         this.picPath = picPath;
@@ -112,7 +114,7 @@ public class PokemonEntity {
         return description;
     }
 
-    public void setDesciption(String description) {
+    public void setDescription(String description) {
         this.description = description;
     }
 
@@ -123,4 +125,6 @@ public class PokemonEntity {
     public void setAppearance(String appearance) {
         this.appearance = appearance;
     }
+
+
 }
